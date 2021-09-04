@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
+import AddTodo from './components/AddTodo';
 import Header from './components/Header';
 import TodoItem from './components/TodoItem';
 
@@ -17,11 +18,20 @@ export default function App() {
     }))
   }
 
+  const handleSubmit = (newTodo) => {
+    setTodos((prevTodos) => {
+      return [
+        {text: newTodo, id: Math.random() * 999999999},
+        ...prevTodos,
+      ]
+    })
+  }
+
   return (
     <View style={styles.container}>
      <Header/>
       <View style={styles.content}>
-        {/* TO FORM */}
+        <AddTodo handleSubmit={handleSubmit} />
         <View style={styles.list}>
           <FlatList 
             data={todos} 
