@@ -8,6 +8,10 @@ const AddTodo = ({ handleSubmit }) => {
     setText(val);
   };
 
+  const handleDismissKeyboard = () => {
+    console.log("keyboard is dismissing");
+  };
+
   return (
     <View style={styles.form}>
       <TextInput
